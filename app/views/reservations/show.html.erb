@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start at:</strong>
+  <%= @reservation.start_date %>
+</p>
+
+<p>s
+  <strong>End at:</strong>
+  <%= @reservation.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Destroy',  reservation_path(@reservation),  method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', reservations_path %>

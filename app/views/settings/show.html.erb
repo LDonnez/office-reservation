@@ -1,0 +1,19 @@
+<div class="container">
+  <% if notice %>
+    <div class="alert alert-success">
+      <p id="notice"><%= notice %></p>
+    </div>
+  <% end %>
+
+  <p>
+    <strong>Google api key:</strong>
+    <%= @user.google_api_key %>
+  </p>
+
+  <p>
+    <strong>Google calendar ID:</strong>
+    <%= @user.google_calendar_id %>
+  </p>
+
+  <%= link_to 'Edit', edit_setting_path(@user), class: "btn btn-primary" %>
+</div>

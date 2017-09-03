@@ -1,0 +1,35 @@
+<%= form_for user, url: setting_path(user) do |f| %>
+  <% if user.errors.any? %>
+    <% user.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="row">
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <%= f.label :google_api_key%>
+        <%= f.text_field :google_api_key, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <%= f.label :google_calendar_id %>
+        <%= f.text_field :google_calendar_id, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-sm-4'>
+      <div class="actions">
+        <%= f.submit "Update", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

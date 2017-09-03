@@ -1,0 +1,41 @@
+<div class="container">
+  <% if notice %>
+    <div class="alert alert-success">
+      <p id="notice"><%= notice %></p>
+    </div>
+  <% end %>
+  <%= render 'new', reservation: @reservation %>
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="calendar", class="calendar"></div>
+    </div>
+  </div>
+</div>
+<%= javascript_tag defer: 'defer' do -%>
+  function initializeCalendar() {
+    return $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+      eventSources: [
+        {
+          url: '/reservations.json'
+        },
+        {
+          googleCalendarApiKey: '<%= current_user.google_api_key %>',
+          googleCalendarId: '<%= current_user.google_calendar_id %>'
+        }
+      ]
+    });
+  };
+
+function clearCalendar() {
+  $('#calendar').fullCalendar('delete');
+  $('#calendar').html('');
+};
+
+$(document).on('turbolinks:load', initializeCalendar);
+$(document).on('turbolinks:before-cache', clearCalendar)
+<% end %>

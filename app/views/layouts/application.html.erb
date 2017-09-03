@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OfficeReservation</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+</nav>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Office Reservation</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li>
+        <%= link_to 'Reservations', reservations_path%>
+      </li>
+      <% if current_user.admin %>
+        <li>
+          <%= link_to 'Rooms', rooms_path%>
+        </li>
+      <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= link_to 'Settings', setting_path(current_user)%>
+      </li>
+      <li>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      </li>
+    </ul>
+  </div>
+</nav>
+<body>
+  <%= yield %>
+</body>
+</html>
