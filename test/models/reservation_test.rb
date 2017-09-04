@@ -22,7 +22,7 @@ class ReservationTest < ActiveSupport::TestCase
   end
 
   test 'should not save the reservation because it overlaps another reservation' do
-    room = FactoryGirl.create(:room) #make sure the reservations have the same room
+    room = FactoryGirl.create(:room) # make sure the reservations have the same room
     FactoryGirl.create(:reservation, start_date: DateTime.new(2022, 0o2, 0o2), end_date: DateTime.new(2022, 0o2, 0o3), room: room)
     reservation = FactoryGirl.build(:reservation, start_date: DateTime.new(2022, 0o2, 0o2), end_date: DateTime.new(2022, 0o2, 0o3), room: room)
     assert_not reservation.save

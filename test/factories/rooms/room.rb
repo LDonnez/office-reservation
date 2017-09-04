@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :room, class: Room do
-    name "test"
+    name 'test'
   end
 end

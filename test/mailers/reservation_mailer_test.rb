@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 describe ReservationMailer do
   # it "must be a real test" do
